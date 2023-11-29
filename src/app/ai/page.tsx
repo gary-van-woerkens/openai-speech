@@ -118,7 +118,7 @@ export default function Page() {
         )}
       </div>
 
-      <div className="tools bottom-0 w-full sticky">
+      <div className="tools bottom-0 w-full fixed">
         <div className="container mx-auto pl-11 flex pb-6 pt-12 gap-x-6">
           <form onSubmit={handleSubmit} className="flex-1 flex">
             <input

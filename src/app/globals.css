@@ -3,55 +3,59 @@
 @tailwind utilities;
 
 body {
-  @apply bg-nord-6 dark:bg-nord-0 text-nord-0 subpixel-antialiased;
+  @apply bg-nord-6 text-nord-3 dark:bg-nord-0 subpixel-antialiased;
 }
 
 .tools {
-  @apply bg-gradient-to-t from-nord-0 from-65%;
+  @apply bg-gradient-to-t from-nord-6 dark:from-nord-0 from-65%;
 }
 
 form {
-  @apply border rounded shadow dark:bg-nord-1 dark:border-nord-3;
+  @apply border rounded shadow bg-white border-nord-4 dark:bg-nord-1 dark:border-nord-3;
 }
 
 form input {
-  @apply p-2 outline-none bg-transparent dark:text-nord-4;
+  @apply p-2 font-sans outline-none bg-transparent text-nord-3 dark:text-nord-4;
 }
 
 form input::placeholder {
-  @apply dark:text-nord-3;
+  @apply text-nord-4 dark:text-nord-3;
 }
 
 form button {
-  @apply w-10 p-1 flex items-center justify-center cursor-pointer outline-none dark:text-nord-0 dark:hover:text-nord-10 dark:focus:text-nord-10;
+  @apply w-10 p-1.5 flex items-center justify-center cursor-pointer outline-none text-nord-4 hover:text-nord-8 focus:text-nord-8 dark:text-nord-0 dark:hover:text-nord-10 dark:focus:text-nord-10;
 }
 
 .recorder-button {
-  @apply w-11 p-1.5 border rounded-full shadow outline-none dark:bg-nord-1 dark:border-nord-3 dark:text-nord-0 dark:hover:text-nord-10 dark:focus:text-nord-10;
+  @apply w-11 p-1.5 border rounded-full shadow outline-none text-nord-4 bg-white border-nord-4 hover:text-nord-8 focus:text-nord-8 dark:bg-nord-1 dark:border-nord-3 dark:text-nord-0 dark:hover:text-nord-10 dark:focus:text-nord-10;
 }
 
 .recorder-button.recording {
   @apply bg-nord-11 text-nord-4;
 }
 
-.markdown-body {
-  @apply dark:!bg-nord-1 dark:!text-nord-4;
-}
-
 .user .avatar {
-  @apply w-8 rounded shadow p-1 bg-nord-15 dark:text-nord-1;
-}
-
-.user .markdown-body {
-  @apply border-l-4 border-l-nord-15;
+  @apply bg-nord-15;
 }
 
 .assistant .avatar {
-  @apply w-8 rounded shadow p-1 bg-nord-12 dark:text-nord-1;
+  @apply bg-nord-12;
+}
+
+.avatar {
+  @apply w-8 rounded shadow p-1 text-nord-6 dark:text-nord-1;
+}
+
+.markdown-body {
+  @apply border-l-4 !font-sans !text-nord-3 dark:!bg-nord-1 dark:!text-nord-4;
+}
+
+.user .markdown-body {
+  @apply border-l-nord-15;
 }
 
 .assistant .markdown-body {
-  @apply border-l-4 border-l-nord-12;
+  @apply border-l-nord-12 text-nord-3;
 }
 
 .message .markdown-body table {
