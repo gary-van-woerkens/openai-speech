@@ -1,6 +1,6 @@
 import { ReactNode, useEffect, useRef } from "react";
 
-import useRecorder from "./use-recorder";
+import useRecorder from "../_hooks/use-recorder";
 
 export default function RecorderButton({
   onStop,

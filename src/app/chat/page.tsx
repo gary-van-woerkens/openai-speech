@@ -2,6 +2,7 @@
 
 import remarkGfm from "remark-gfm";
 import Markdown from "react-markdown";
+import { motion, AnimatePresence } from "framer-motion";
 import { type ChangeEvent, type FormEvent, useEffect, useState } from "react";
 
 import "github-markdown-css";
@@ -10,8 +11,9 @@ import MicIcon from "./_icons/mic-icon";
 import UserIcon from "./_icons/user-icon";
 import SendIcon from "./_icons/send-icon";
 import RobotIcon from "./_icons/robot-icon";
-import RecorderButton from "./recorder-button";
 import SpinnerIcon from "./_icons/spinner-icon";
+import ArrowDownIcon from "./_icons/arrrow-down-icon";
+import RecorderButton from "./_components/recorder-button";
 
 interface Message {
   content: string;
@@ -36,6 +38,22 @@ async function getAIResponse(messages: Message[]) {
     body: JSON.stringify({ messages }),
   });
   return await response.json();
+}
+
+function InitMessage() {
+  return (
+    <div className="fixed bottom-24">
+      <div className="container mx-auto flex flex-col items-center text-2xl text-center ">
+        <p className="mb-3">
+          start by writing a message or use your microphone to have a talk with
+          the AI
+        </p>
+        <div className="w-12 h-12 animate-bounce">
+          <ArrowDownIcon />
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default function Page() {
@@ -99,16 +117,24 @@ export default function Page() {
   return (
     <>
       <div className="container mx-auto flex flex-col gap-y-6 pt-6">
-        {messages.map((m, i) => (
-          <div key={i} className={`message flex gap-x-3 ${m.role}`}>
-            <div className={`relative self-start avatar`}>
-              {m.role === "user" ? <UserIcon /> : <RobotIcon />}
-            </div>
-            <div className={`markdown-body flex-1 p-3 rounded shadow`}>
-              <Markdown remarkPlugins={[remarkGfm]}>{m.content}</Markdown>
-            </div>
-          </div>
-        ))}
+        <AnimatePresence initial={false}>
+          {messages.map((m, i) => (
+            <motion.div
+              key={i}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              initial={{ opacity: 0, y: 50, scale: 0.3 }}
+              exit={{ opacity: 0, scale: 0.5, transition: { duration: 0.2 } }}
+              className={`message flex gap-x-3 ${m.role}`}
+            >
+              <div className={`relative self-start avatar`}>
+                {m.role === "user" ? <UserIcon /> : <RobotIcon />}
+              </div>
+              <div className={`markdown-body flex-1 p-3 rounded shadow`}>
+                <Markdown remarkPlugins={[remarkGfm]}>{m.content}</Markdown>
+              </div>
+            </motion.div>
+          ))}
+        </AnimatePresence>
         {isLoading && (
           <div className="flex justify-center">
             <div className="w-8 h-8 animate-spin">
@@ -116,12 +142,14 @@ export default function Page() {
             </div>
           </div>
         )}
+        {!messages.length && <InitMessage />}
       </div>
 
       <div className="tools bottom-0 w-full fixed">
         <div className="container mx-auto pl-11 flex pb-6 pt-12 gap-x-6">
           <form onSubmit={handleSubmit} className="flex-1 flex">
             <input
+              autoFocus
               value={inputValue}
               className="flex-1"
               onChange={handleInputChange}

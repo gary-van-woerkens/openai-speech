@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply bg-nord-6 text-nord-3 dark:bg-nord-0 subpixel-antialiased;
+  @apply font-sans bg-nord-6 text-nord-3 dark:bg-nord-0 subpixel-antialiased;
 }
 
 .tools {
@@ -15,7 +15,7 @@ form {
 }
 
 form input {
-  @apply p-2 font-sans outline-none bg-transparent text-nord-3 dark:text-nord-4;
+  @apply p-2 outline-none bg-transparent text-nord-3 dark:text-nord-4;
 }
 
 form input::placeholder {
@@ -48,6 +48,14 @@ form button {
 
 .markdown-body {
   @apply border-l-4 !font-sans !text-nord-3 dark:!bg-nord-1 dark:!text-nord-4;
+}
+
+.markdown-body ul {
+  @apply list-disc;
+}
+
+.markdown-body ol {
+  @apply list-decimal;
 }
 
 .user .markdown-body {
