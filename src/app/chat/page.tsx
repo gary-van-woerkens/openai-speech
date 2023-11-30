@@ -42,7 +42,7 @@ async function getAIResponse(messages: Message[]) {
 
 function InitMessage() {
   return (
-    <div className="fixed bottom-24">
+    <div className="fixed bottom-24 w-full left-0 right-0">
       <div className="container mx-auto flex flex-col items-center text-2xl text-center ">
         <p className="mb-3">
           start by writing a message or use your microphone to have a talk with
@@ -116,7 +116,7 @@ export default function Page() {
 
   return (
     <>
-      <div className="container mx-auto flex flex-col gap-y-6 pt-6">
+      <div className="container mx-auto flex flex-col gap-y-6 pt-6 pb-24">
         <AnimatePresence initial={false}>
           {messages.map((m, i) => (
             <motion.div
