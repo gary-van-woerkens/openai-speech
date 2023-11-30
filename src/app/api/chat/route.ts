@@ -2,7 +2,7 @@ import OpenAI from "openai";
 import { ServerResponse } from "http";
 
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey: process.env.OPENAI_API_KEY || "",
 });
 
 export const runtime = "edge";

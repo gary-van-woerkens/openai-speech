@@ -3,7 +3,7 @@ import OpenAI, { toFile } from "openai";
 import { WriteStream, createReadStream, createWriteStream } from "fs";
 
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey: process.env.OPENAI_API_KEY || "",
 });
 
 export async function POST(request: Request) {
