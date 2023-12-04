@@ -1,0 +1,7 @@
+form input, form textarea {
+  @apply p-2 border rounded outline-none dark:text-nord-4 dark:border-nord-3 dark:bg-nord-1;
+}
+
+form input::placeholder, form textarea::placeholder {
+  @apply dark:text-nord-3;
+}

@@ -4,8 +4,8 @@ import { Open_Sans } from "next/font/google";
 import "./globals.css";
 
 const openSans = Open_Sans({
-  subsets: ["latin"],
   display: "swap",
+  subsets: ["latin"],
   variable: "--font-open-sans",
 });
 
