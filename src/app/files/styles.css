@@ -1,0 +1,7 @@
+.file {
+  @apply border rounded shadow p-3 dark:border-nord-3 dark:bg-nord-2 dark:text-nord-10;
+}
+
+table tr td button {
+  @apply w-6 h-6 p-0 border-none cursor-pointer bg-transparent text-nord-4 hover:bg-transparent hover:text-nord-11 dark:text-nord-3;
+}
